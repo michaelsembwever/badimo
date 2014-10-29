@@ -17,7 +17,7 @@ module ExtremeStartup
 
     set :port, 3000
     set :static, true 
-    set :public, 'public'
+    set :public_dir, 'public'
     set :players,    Hash.new
     set :players_threads, Hash.new
     set :scoreboard, Scoreboard.new(ENV['LENIENT'])
