@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'set'
 require 'prime'
 
@@ -47,11 +48,11 @@ module ExtremeStartup
         else 20
       end
     end
-    
+
     def was_answered_correctly
       result == "correct"
     end
-    
+
     def was_answered_wrongly
       result == "wrong"
     end
@@ -132,7 +133,7 @@ module ExtremeStartup
 
   class MaximumQuestion < SelectFromListOfNumbersQuestion
     def as_text
-      "which of the following numbers is the largest: " + @numbers.join(', ')
+      "hvilket av disse tallene er storst: " + @numbers.join(', ')
     end
     def points
       40
@@ -149,7 +150,7 @@ module ExtremeStartup
 
   class AdditionQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2}"
+      "hva er #{@n1} pluss #{@n2}"
     end
   private
     def correct_answer
@@ -159,7 +160,7 @@ module ExtremeStartup
 
   class SubtractionQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} minus #{@n2}"
+      "hva er #{@n1} minus #{@n2}"
     end
   private
     def correct_answer
@@ -169,7 +170,7 @@ module ExtremeStartup
 
   class MultiplicationQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} multiplied by #{@n2}"
+      "hva er #{@n1} ganget med #{@n2}"
     end
   private
     def correct_answer
@@ -179,7 +180,7 @@ module ExtremeStartup
 
   class AdditionAdditionQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2} plus #{@n3}"
+      "hva er #{@n1} pluss #{@n2} pluss #{@n3}"
     end
     def points
       30
@@ -192,7 +193,7 @@ module ExtremeStartup
 
   class AdditionMultiplicationQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2} multiplied by #{@n3}"
+      "hva er #{@n1} pluss #{@n2} ganget med #{@n3}"
     end
     def points
       60
@@ -205,7 +206,7 @@ module ExtremeStartup
 
   class MultiplicationAdditionQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} multiplied by #{@n2} plus #{@n3}"
+      "hva er #{@n1} ganget med #{@n2} pluss #{@n3}"
     end
     def points
       50
@@ -218,7 +219,7 @@ module ExtremeStartup
 
   class PowerQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} to the power of #{@n2}"
+      "hva er #{@n1} opphoyet i #{@n2}"
     end
     def points
       20
@@ -231,7 +232,7 @@ module ExtremeStartup
 
   class SquareCubeQuestion < SelectFromListOfNumbersQuestion
     def as_text
-      "which of the following numbers is both a square and a cube: " + @numbers.join(', ')
+      "hvilke av disse tallene har heltalls kvadratrot og kubikkrot: " + @numbers.join(', ')
     end
     def points
       60
@@ -264,7 +265,7 @@ module ExtremeStartup
 
   class PrimesQuestion < SelectFromListOfNumbersQuestion
      def as_text
-       "which of the following numbers are primes: " + @numbers.join(', ')
+       "hvilke av disse tallene er primtall: " + @numbers.join(', ')
      end
      def points
        60
@@ -282,13 +283,7 @@ module ExtremeStartup
   class FibonacciQuestion < BinaryMathsQuestion
     def as_text
       n = @n1 + 4
-      if (n > 20 && n % 10 == 1)
-        return "what is the #{n}st number in the Fibonacci sequence"
-      end
-      if (n > 20 && n % 10 == 2)
-        return "what is the #{n}nd number in the Fibonacci sequence"
-      end
-      return "what is the #{n}th number in the Fibonacci sequence"  
+      return "hva er det #{n}. nummeret i Fibonaccirekken"
     end
     def points
       50
@@ -306,11 +301,16 @@ module ExtremeStartup
     class << self
       def question_bank
         [
-          ["who is the Prime Minister of Great Britain", "David Cameron"],
           ["which city is the Eiffel tower in", "Paris"],
           ["what currency did Spain use before the Euro", "peseta"],
           ["what colour is a banana", "yellow"],
-          ["who played James Bond in the film Dr No", "Sean Connery"]
+          ["hvilken farge har bananer", "gul"],
+          ["hva er FINNs fire verdier som preger oss i alt vi gjør", "sult, presisjon, takhøyde og humør"],
+          ["who played James Bond in the film Dr No", "Sean Connery"],
+          ["i hvilket år endret FINNs nettsider fra oransje til blå?", "1999"],
+          ["i hvilket år fikk FINN 100 ansatte?", "2006"],
+          ["i hvilken by finner du Louvre", "Paris"],
+          ["hvilken myntenhet brukte Italia tidligere", "lire"]
         ]
       end
     end
@@ -386,6 +386,80 @@ module ExtremeStartup
     end
   end
 
+  class FinnkodeQuestion < Question
+    class << self
+      def question_type
+        ["pris", "tittel"]
+      end
+      def question_bank
+        [
+          ["52871626", "14 900 000", "HOLMENKOLLEN: Representativ, påkostet murvilla med spennende arkitektur, unike interiørløsninger og solid konstruksjon"],
+          ["52992738", "0", "2 stk 2013 model tv'er gis bort. pga Latterlige regler hos NRK"],
+          ["52992702", "20", "Kjeledyr på 15 selges billig ved hurtig avgjørelse"],
+          ["52987398", "321 500", "Porsche 911 E 1969, 95 200 km, kr 321 500,-"],
+          ["52992230", "200 000", "El Diablo 42 Limited Edition"],
+          ["52987538", "4 600 000", "NYBYGG Selfa 1099 MAX"],
+          ["52992050", "2 230 000", "RÅHOLT/ SENTRALT - Tiltalende 1/2 tomannsbolig i barnevennlig område"],
+          ["52969613", "65", "Fyrstikkholder i kobber"],
+          ["52827860", "2 800", "Vakker 1800-talls rokokko sofa"],
+          ["52993375", "1 500", "Maleri av J. Lidsheim - Hålandsdal"],
+          ["52940791", "500", "Sinkbalje"],
+          ["52987860", "0", "HP Pavilion p6669sc"],
+          ["52993210", "0", "Candy Grand Vaskemaskin"],
+          ["52992977", "2 000", "Samsung Note 3"],
+          ["52980000", "1 800", "iPhone 5 16GB hvit"],
+          ["53001872", "0", "Fin gyngehest"],
+          ["52927028", "0", "TV JVC 37 tommer"],
+          ["52862481", "8 500", "Sentralt - sentralfyr og nytt kjøkken"],
+          ["52017699", "400", "Xbox 360 konsoler til salg"],
+          ["52868872", "4 000", "Sentrumsnært rom til leie"],
+          ["52899324", "7 000", "Louis Vuitton"],
+          ["52835034", "50", "MASSE nydelige pyntegjenstander selges billig"],
+          ["52873320", "550", "iPhone 5S deletelefon"],
+          ["52867518", "0", "Barglobus"],
+          ["52841476", "0", "Fin hjørnesofa gis bort!"],
+          ["52846114", "0", "Kjeler"],
+          ["52854025", "750", "Intel 3770k PSU og ASRock HK"],
+          ["52832726", "1 500", "Brenderup Tilhenger til salgs"],
+          ["52809446", "0", "To stålamper gis bort ved henting"],
+          ["52806371", "0", "Canon Pixma MP800"],
+          ["52795506", "14 500 000", "Villa på Slemdal - stor tomt - Oppussingsobjekt"],
+          ["52804463", "0", "Farmors sofa"],
+          ["51226040", "45 000 000,", "DØNNEVIK GÅRD - En unik mulighet for å realisere en drøm - Høy prisklasse"],
+          ["49150651", "45 000 000", "Herskapelig og ærverdig gods på stor sjøeiendom i Larvik"],
+          ["48957077", "45 000 000", "Spektakulær eiendom i Sandefjord"],
+          ["41609162", "45 000 000", "IDYLL PÅ SNARØYA -Lekkert arkitekttegnet teglsteinshus-Strandtomt-Panoramautsikt"],
+          ["47946692", "43 500 000", "Strandeiendom på Bygdøy-Unik mulighet. Bryggeanlegg i betong-innendørs svømmebasseng-strandhus-praktikantdel-stor tomt."],
+          ["52953788", "100 016 733", "Pen hjørnesofa, 3 x 2 m inkl sjeselong"],
+          ["52576997", "750 000", "Tangen sotet, komplett, 47 glass"],
+          ["52060372", "600 000", "Gullnummer 9779 9779"],
+          ["48162135", "475 000", "Antikk Drikkehorn i sølv"],
+          ["48072141", "3 800", "Veldig pent diamantanheng!"],
+          ["51767365", "489 000", "AP Royal Oak Offshore Rubens Barrichello"],
+          ["52886210", "395 495", "NYE 1:18 GT Modeller: Anson - Yat Ming - Burago - Maisto - Welly"]
+        ]
+      end
+    end
+    def as_text
+      "hva er #{@type} til finnkode #{@finnkode}"
+    end
+
+    def initialize(player)
+      @type = FinnkodeQuestion.question_type.sample
+      question = FinnkodeQuestion.question_bank.sample
+      @finnkode = question[0]
+      if @type == "pris"
+        @correct_answer = question[1]
+      else
+        @correct_answer = question[2]
+      end
+    end
+
+    def answered_correctly?(answer)
+      answer.to_s.downcase.strip.include? @correct_answer.to_s.downcase.strip
+    end
+  end
+
   class QuestionFactory
     attr_reader :round
 
@@ -398,10 +472,12 @@ module ExtremeStartup
         SquareCubeQuestion,
         GeneralKnowledgeQuestion,
         PrimesQuestion,
+        FinnkodeQuestion,
         SubtractionQuestion,
         FibonacciQuestion,
         PowerQuestion,
         AdditionAdditionQuestion,
+        FinnkodeQuestion,
         AdditionMultiplicationQuestion,
         MultiplicationAdditionQuestion,
         AnagramQuestion,
@@ -432,7 +508,7 @@ module ExtremeStartup
     end
 
     def as_text
-      "what is your name"
+      "hva heter laget deres"
     end
   end
 
