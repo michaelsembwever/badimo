@@ -74,7 +74,10 @@ module ExtremeStartup
     end
 
     def answer
-      @answer && @answer.downcase.strip
+      begin
+        @answer && @answer.downcase.strip
+      rescue
+      end
     end
 
     def answered_correctly?(answer)
@@ -307,9 +310,9 @@ module ExtremeStartup
           ["hvilken farge har bananer", "gul"],
           ["hva er FINNs fire verdier som preger oss i alt vi gjør", "sult, presisjon, takhøyde og humør"],
           ["who played James Bond in the film Dr No", "Sean Connery"],
-          ["i hvilket år endret FINNs nettsider fra oransje til blå?", "1999"],
-          ["i hvilket år fikk FINN 100 ansatte?", "2006"],
-          ["i hvilken by finner du Louvre", "Paris"],
+          ["hvilket år endret FINNs nettsider fra oransje til blå", "1999"],
+          ["hvilket år fikk FINN 100 ansatte", "2006"],
+          ["hvilken by finner du Louvre", "Paris"],
           ["hvilken myntenhet brukte Italia tidligere", "lire"]
         ]
       end

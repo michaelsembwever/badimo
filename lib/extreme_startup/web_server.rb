@@ -15,9 +15,11 @@ module ExtremeStartup
     
   class WebServer < Sinatra::Base
 
-    set :port, 3000
+    set :bind, '0.0.0.0'
+    set :port, 3002
     set :static, true 
-    set :public_dir, 'public'
+    set :public_folder, Proc.new { File.join(root, "public") }
+    set :views, Proc.new { File.join(root, "views") }
     set :players,    Hash.new
     set :players_threads, Hash.new
     set :scoreboard, Scoreboard.new(ENV['LENIENT'])
