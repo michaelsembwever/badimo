@@ -490,7 +490,7 @@ module ExtremeStartup
 
     def next_question(player)
       window_end = (@round * 2 - 1)
-      window_start = [0, window_end - 4].max
+      window_start = 0
       available_question_types = @question_types[window_start..window_end]
       available_question_types.sample.new(player)
     end
